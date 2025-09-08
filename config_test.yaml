@@ -1,0 +1,46 @@
+data:
+  data_root: "data/chest_xray_pneumonia"
+  preprocessing: "raw"
+  image_size: [224, 224]
+  batch_size: 8
+  val_split: 0.1
+  test_split: 0.1
+  random_seed: 42
+
+model:
+  architecture: "densenet121"
+  pretrained: true
+  num_classes: 1
+  dropout_rate: 0.3
+
+training:
+  epochs: 2  # Just 2 epochs for testing
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: "adam"
+  scheduler: "reduce_on_plateau"
+  patience: 5
+  factor: 0.5
+  early_stopping_patience: 10
+  class_weights: [1.0, 2.0]
+  
+  # Hardware
+  device: "auto"
+  num_workers: 0  # Windows compatible
+  pin_memory: false
+  
+  # Logging
+  log_dir: "logs"
+  output_dir: "outputs"
+  log_frequency: 50
+
+evaluation:
+  metrics: ["auroc", "f1", "accuracy", "precision", "recall"]
+  generate_gradcam: true
+  calibration_analysis: true
+  save_plots: true
+
+experiment:
+  name: "pneumonia_test"
+  description: "Test run of pneumonia classification with real chest X-ray data"
+  tags: ["pneumonia", "densenet121", "test"]

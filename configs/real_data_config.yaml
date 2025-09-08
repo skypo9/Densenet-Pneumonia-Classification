@@ -1,0 +1,29 @@
+# Real Data Test Configuration
+data:
+  data_root: "data/chest_xray_pneumonia"
+  preprocessing_type: "histogram_matching"
+  image_size: [224, 224]
+  use_augmentation: true
+  
+model:
+  backbone: "densenet121"
+  pretrained: true
+  dropout_rate: 0.3
+  
+training:
+  num_epochs: 15
+  batch_size: 16
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-3
+  class_balancing: true
+  pos_weight: 1.5  # For pneumonia imbalance
+  patience: 8
+  
+evaluation:
+  generate_gradcam: true
+  num_gradcam_samples: 20
+  threshold_metric: "f1"
+  
+experiment:
+  experiment_name: "real_data_test"
+  description: "Test with real chest X-ray data"

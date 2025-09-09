@@ -1,6 +1,6 @@
 # Pneumonia Classification with DenseNet-121
 
-A comprehensive pneumonia classification system using DenseNet-121 on chest X-ray images with patient-level data splits, multiple preprocessing pipelines, and GradCAM interpretability analysis.
+A baseline pneumonia classification system using DenseNet-121 on chest X-ray images with patient-level data splits, multiple preprocessing pipelines, and GradCAM interpretability analysis.
 
 ## System Status: OPERATIONAL
 - **Real Medical Data**: Successfully tested on 5,856 chest X-ray images
